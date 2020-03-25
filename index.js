@@ -52,7 +52,7 @@ Person.prototype.eat = function(someFood){
 Person.prototype.poop = function(){
   this.stomach = [];
 }
-Person.prototype.toString = function(name, age){
+Person.prototype.toString = function(){
   return `${this.name} and ${this.age}`;
 }
 /*
@@ -79,16 +79,26 @@ Car.prototype.fill = function(gallons){
   this.tank += gallons;
 }
 Car.prototype.drive = function(distance){
-  if(this.tank <= this.milesPerGallon*distance){
-    let breakdown = Math.floor(distance - this.tank/this.milesPerGallon);
-    this.odometer += breakdown;
+  let breakdown = distance - this.milesPerGallon*this.tank;
+  this.odometer += distance;
+  this.tank -= (distance/this.milesPerGallon);
+  if(this.tank < 0){
+    this.odometer -= breakdown;
     this.tank = 0;
     return `I ran out of fuel at ${breakdown} miles!`;
-  } else{
-    this.odometer += distance;
-    this.tank -= (distance/this.milesPerGallon);
   }
 }
+// Car.prototype.drive = function(distance){
+//   if(this.tank <= this.milesPerGallon*distance){
+//     let breakdown = Math.floor(distance - this.tank/this.milesPerGallon);
+//     this.odometer += breakdown;
+//     this.tank = 0;
+//     return `I ran out of fuel at ${breakdown} miles!`;
+//   } else{
+//     this.odometer += distance;
+//     this.tank -= (distance/this.milesPerGallon);
+//   }
+// }
 
 /*
   TASK 3
@@ -97,13 +107,13 @@ Car.prototype.drive = function(distance){
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby(name, age, favToy) {
+function Baby(name, age, favoriteToy) {
   this.name = name;
   this.age = age;
-  this.toy = favToy;
+  this.toy = favoriteToy;
 }
 Baby.prototype = Object.create(Person.prototype);
-Baby.prototype.play = function(toy){
+Baby.prototype.play = function(){
   return `Playing with ${this.toy}, ${this.toy} being the favorite toy.`;
 }
 /* 
