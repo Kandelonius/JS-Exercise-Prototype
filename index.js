@@ -50,7 +50,10 @@ Person.prototype.eat = function(someFood){
   }
 }
 Person.prototype.poop = function(){
-
+  this.stomach = [];
+}
+Person.prototype.toString = function(name, age){
+  return `${this.name} and ${this.age}`;
 }
 /*
   TASK 2
