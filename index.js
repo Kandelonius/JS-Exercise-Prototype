@@ -121,10 +121,10 @@ Baby.prototype.play = function(){
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Window Binding- A catch all if none of the other rules apply. If you are in strict mode this will instead return undefined.
+  2. Implicit Binding- The most common rule also known for being left of the dot rule since what is left of the period is what this refers to. Only used in objects within methods.
+  3. Explicit Binding- used with call and apply. .call passes arguments 1 by 1 whereas .apply passes them in an array. Bind also passes arguments 1 by 1 but doesn't immediately invoke the function.
+  4. New Binding- used to create new instances of an object that has already been layed out.
 */
 
 
