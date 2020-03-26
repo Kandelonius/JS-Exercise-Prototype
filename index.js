@@ -108,13 +108,14 @@ Car.prototype.drive = function(distance){// d = T(m/g) & m = gd/T
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby(name, age, favoriteToy) {
-  this.name = name;
-  this.age = age;
-  this.toy = favoriteToy;
+  Person.call(this, name, age);
+  // this.name = name;
+  // this.age = age;
+  this.favoriteToy = favoriteToy;
 }
 Baby.prototype = Object.create(Person.prototype);
 Baby.prototype.play = function(){
-  return `Playing with ${this.toy}, ${this.toy} being the favorite toy.`;
+  return `Playing with ${this.favoriteToy}, ${this.favoriteToy} being the favorite toy.`;
 }
 /* 
   TASK 4
